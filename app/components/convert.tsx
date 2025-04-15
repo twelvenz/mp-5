@@ -21,7 +21,7 @@ export default function Convert() {
 
                     createNewLink(url, link)
                         .then((res) => {
-                            setResult(`http://localhost:3000/${res.link}`);
+                            setResult(`https://url-shorting-app.vercel.app/${res.link}`);
                             setError("");
                         })
                         .catch((err) => {
