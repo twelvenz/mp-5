@@ -2,7 +2,7 @@
 import {PropTypes} from "@/types"
 import getCollection, {URL_COLLECTION} from "@/db";
 
-export default async function createNewLink(
+export default async function createLink(
     url: string,
     link: string,)
     : Promise<PropTypes>{
@@ -16,7 +16,7 @@ export default async function createNewLink(
 
     const exists = await urlCollection.findOne({ link: link });
     if (exists) {
-        throw new Error("Shortened URL already exists.");
+        throw new Error ("Shortened URL already exists.");
     }
 
     const res = await urlCollection.insertOne({...p});

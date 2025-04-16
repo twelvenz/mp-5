@@ -2,9 +2,11 @@
 
 import {useState} from "react";
 import {Button, TextField} from "@mui/material";
-import createNewLink from "@/app/lib/create-new-link";
+import createNewLink from "@/app/lib/create-link";
 import Link from "next/link";
 import urlValidation from "@/app/lib/url-validation";
+import linkValidation from "@/app/lib/link-validation";
+
 
 export default function Convert() {
 
@@ -23,6 +25,12 @@ export default function Convert() {
                     const validURL = await urlValidation(url);
                     if (!validURL) {
                         setError("Invalid URL.");
+                        return;
+                    }
+
+                    const validLink = await linkValidation(link);
+                    if (!validLink) {
+                        setError("Shortened URL already exists!!");
                         return;
                     }
 
