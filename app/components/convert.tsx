@@ -16,7 +16,7 @@ export default function Convert() {
     return(
         <>
             <form
-                className="w-100 rounded-xl p-4 bg-red-300"
+                className="w-100 rounded-xl p-4 bg-rose-200"
                 onSubmit={async(e) => {
                     e.preventDefault();
 
@@ -68,17 +68,17 @@ export default function Convert() {
                     </Button>
                 </div>
 
-                <div className="w-full items-center my-3 font-bold text-xl">
+                <div className="w-full items-center my-4 p-1 font-bold text-l text-red-600 ">
                     {error ? error : ""}
                 </div>
 
                 {result ? (
                     <div className="w-full block m-2">
-                        <p className="text-gray-700 font-bold text-xl mb-1"> Shortened URL:</p>
+                        <p className="text-gray-700 font-bold text-xl mb-1 w-full"> Shortened URL:</p>
                         <Link
                             href={`/${link}`}
                             target="_blank"
-                            className="bg-amber-100 px-2 py-1 font-bold text-blue-600 hover:underline rounded"
+                            className="bg-amber-100 w-full px-2 py-1 font-bold text-blue-600 hover:underline rounded"
                         >
                             {result}
                         </Link>
