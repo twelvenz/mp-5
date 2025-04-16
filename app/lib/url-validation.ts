@@ -1,6 +1,6 @@
 "use server";
 
-export default async function checkUrl(url: string): Promise<boolean>{
+export default async function urlValidation(url: string): Promise<boolean>{
     try{
         const res = await fetch(url)
         return res.status >= 200 && res.status < 400;

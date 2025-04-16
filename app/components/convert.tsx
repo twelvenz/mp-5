@@ -4,7 +4,7 @@ import {useState} from "react";
 import {Button, TextField} from "@mui/material";
 import createNewLink from "@/app/lib/create-new-link";
 import Link from "next/link";
-import checkUrl from "@/app/lib/check-url";
+import urlValidation from "@/app/lib/url-validation";
 
 export default function Convert() {
 
@@ -20,7 +20,7 @@ export default function Convert() {
                 onSubmit={async(e) => {
                     e.preventDefault();
 
-                    const validURL = await checkUrl(url);
+                    const validURL = await urlValidation(url);
                     if (!validURL) {
                         setError("Invalid URL.");
                         return;
