@@ -30,7 +30,7 @@ export default function Convert() {
 
                     const validLink = await linkValidation(link);
                     if (!validLink) {
-                        setError("Shortened URL already exists!!");
+                        setError("Shortened URL already exists.");
                         return;
                     }
 
