@@ -4,6 +4,7 @@ import {useState} from "react";
 import {Button, TextField} from "@mui/material";
 import createNewLink from "@/app/lib/create-new-link";
 import Link from "next/link";
+import checkUrl from "@/app/lib/check-url";
 
 export default function Convert() {
 
@@ -16,17 +17,23 @@ export default function Convert() {
         <>
             <form
                 className="w-100 rounded-xl p-4 bg-red-300"
-                onSubmit={(e) => {
+                onSubmit={async(e) => {
                     e.preventDefault();
+
+                    const validURL = await checkUrl(url);
+                    if (!validURL) {
+                        setError("Invalid URL.");
+                        return;
+                    }
 
                     createNewLink(url, link)
                         .then((res) => {
                             setResult(`https://url-shorting-app.vercel.app/${res.link}`);
                             setError("");
                         })
-                        .catch((err) => {
-                            setError(err.message);
-                            console.error(err);
+                        .catch((e) => {
+                            setError(e.message);
+                            console.error(e);
                         });
                 }}
             >
